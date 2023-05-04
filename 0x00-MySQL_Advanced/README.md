@@ -1,3 +1,0 @@
-Advanced MySQL
-Backend
-Storage
