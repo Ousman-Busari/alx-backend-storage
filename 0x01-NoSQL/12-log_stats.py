@@ -4,24 +4,25 @@
 """
 from pymongo import MongoClient
 
+
 if __name__ == "__main__":
     client = MongoClient()
     db = client.logs
     print("{} logs".format(db.nginx.count_documents({})))
     print("Methods:")
-    print("\t", "method GET: {}".format(db.nginx.count_documents({
+    print("{}method GET: {}".format("\t", db.nginx.count_documents({
         "method": "GET"
     })))
-    print("\t", "method POST: {}".format(db.nginx.count_documents({
+    print("{}method POST: {}".format("\t", db.nginx.count_documents({
         "method": "POST"
     })))
-    print("\t", "method PUT: {}".format(db.nginx.count_documents({
+    print("{}method PUT: {}".format("\t", db.nginx.count_documents({
         "method": "PUT"
     })))
-    print("\t", "method PATCH: {}".format(db.nginx.count_documents({
+    print("{}method PATCH: {}".format("\t", db.nginx.count_documents({
         "method": "PATCH"
     })))
-    print("\t", "method DELETE: {}".format(db.nginx.count_documents({
+    print("{}method DELETE: {}".format("\t", db.nginx.count_documents({
         "method": "DELETE"
     })))
     print("{} status check".format(db.nginx.count_documents({
