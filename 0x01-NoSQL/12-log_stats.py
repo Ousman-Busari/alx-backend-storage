@@ -7,7 +7,7 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.logs
-print(db.nginx.count_documents({}))
+print("{} logs".format(db.nginx.count_documents({})))
 print("Methods:")
 print("\t", "method GET: {}".format(db.nginx.count_documents({
     "method": "GET"
