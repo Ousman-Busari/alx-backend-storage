@@ -13,7 +13,6 @@ def top_students(mongo_collection):
         for topic in student_doc.get("topics"):
             total_score += topic.get("score")
         averageScore = total_score / len(student_doc.get("topics"))
-        print(averageScore)
         mongo_collection.update_one(
             {"name": student_doc.get("name")},
             {"$set": {"averageScore": averageScore}}
