@@ -12,7 +12,7 @@ r = redis.Redis()
 """Global redis instance"""
 
 
-def count_url(method: Callable) -> Callable:
+def count_url(func: Callable) -> Callable:
     """
     cache the result of method with an
     expiration time of 10 seconds
@@ -26,7 +26,7 @@ def count_url(method: Callable) -> Callable:
         res = r.get(f"response:{url}")
         if res:
             return res.decode("utf-8")
-        res = method(url)
+        res = func(url)
         r.set(f"count:{url}", 0)
         r.setex(f"response:{url}", 10, res)
         return res
