@@ -24,7 +24,7 @@ def count_url(method: Callable) -> Callable:
         r.incr(f"count:{url}")
         res = r.get(f"response:{url}")
         if res:
-            return res.decode("utf-8")
+            return res.decode()
         res = method(url)
         r.set(f"count:{url}", 0)
         r.setex(f"response:{url}", 10, res)
