@@ -23,7 +23,7 @@ def count_url(func: Callable) -> Callable:
         wraps method and cachees it result
         """
         r.incrby(f"count:{url}", 1)
-        r.expire(f"count:{url}". 10)
+        r.expire(f"count:{url}", 10)
         # res = r.get(f"response:{url}")
         # if res:
         #     return res.decode("utf-8")
