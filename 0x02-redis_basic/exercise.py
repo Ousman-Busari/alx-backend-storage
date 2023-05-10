@@ -54,7 +54,7 @@ def replay(method: Callable) -> None:
     pairs = zip(inputs, outputs)
     for pair in pairs:
         print("{}(*({},)) -> {}".format(func_name, pair[0].decode(),
-                                     pair[1].decode()))
+                                        pair[1].decode()))
 
 
 class Cache:
