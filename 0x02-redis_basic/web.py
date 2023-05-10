@@ -23,13 +23,13 @@ def count_url(method: Callable) -> Callable:
         wraps method and cachees it result
         """
         r.incrby(f"count:{url}", 1)
-        r.expire(f"count:{url}", 10)
         # res = r.get(f"response:{url}")
         # if res:
         #     return res.decode("utf-8")
         res = method(url)
         # r.set(f"count:{url}", 0)
         # r.setex(f"response:{url}", 10, res)
+        r.expire(f"count:{url}", 10)
         return res
     return wrapper
 
