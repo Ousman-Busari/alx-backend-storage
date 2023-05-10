@@ -21,13 +21,13 @@ def count_visits(method: Callable) -> Callable:
         """
         wraps method and cachees it result
         """
-        r.incr("count:{}".format(url))
+        r.incr(f"count:{url}")
         res = r.get("response:{}".format(url))
         if res:
-            return res.decode("utf-8")
+            return res.decode()
         res = method(url)
-        r.set("count:{}".format(url), 0)
-        r.setex("response:{}".format(url), 10, res)
+        # r.set(f"count:{url}", 0)
+        r.setex(f"response:{url}", 10, res)
         return res
     return wrapper
 
