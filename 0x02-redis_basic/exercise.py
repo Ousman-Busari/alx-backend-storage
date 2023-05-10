@@ -53,7 +53,7 @@ def replay(method: Callable) -> None:
     outputs = db.lrange(output_list, 0, -1)
     pairs = zip(inputs, outputs)
     for pair in pairs:
-        print("{}(*{}) -> {}".format(func_name, pair[0].decode(),
+        print("{}(*{},) -> {}".format(func_name, pair[0].decode(),
                                      pair[1].decode()))
 
 
