@@ -66,7 +66,7 @@ def count_url(method: Callable) -> Callable:
         if result:
             return result.decode("utf-8")
         result = method(url)
-        r.set(f"count:{url}", 0)
+        # r.set(f"count:{url}", 0)
         r.setex(f"result:{url}", 10, result)
         return result
     return wrapper
