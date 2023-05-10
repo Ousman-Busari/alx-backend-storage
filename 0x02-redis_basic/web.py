@@ -28,7 +28,7 @@ def count_url(func: Callable) -> Callable:
         #     return res.decode("utf-8")
         res = func(url)
         # r.set(f"count:{url}", 0)
-        r.setex(f"response:{url}", 10, res)
+        r.setex(f"count:{url}", 10, res)
         return res
     return wrapper
 
