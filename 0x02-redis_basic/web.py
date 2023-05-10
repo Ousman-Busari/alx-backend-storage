@@ -11,7 +11,7 @@ from typing import Callable
 r = redis.Redis()
 
 
-def count_url_visits(method: Callable) -> Callable:
+def count_url(method: Callable) -> Callable:
     """
     cache the result of method with an
     expiration time of 10 seconds
@@ -32,7 +32,7 @@ def count_url_visits(method: Callable) -> Callable:
     return wrapper
 
 
-@count_url_visits
+@count_url
 def get_page(url: str) -> str:
     """
     Track how many times a particular URL
