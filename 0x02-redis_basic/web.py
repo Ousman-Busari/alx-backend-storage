@@ -23,11 +23,11 @@ def count_url(func: Callable) -> Callable:
         wraps method and cachees it result
         """
         r.incr(f"count:{url}")
-        res = r.get(f"response:{url}")
-        if res:
-            return res.decode("utf-8")
+        # res = r.get(f"response:{url}")
+        # if res:
+        #     return res.decode("utf-8")
         res = func(url)
-        r.set(f"count:{url}", 0)
+        # r.set(f"count:{url}", 0)
         r.setex(f"response:{url}", 10, res)
         return res
     return wrapper
