@@ -46,7 +46,7 @@ def replay(method: Callable) -> None:
     db = redis.Redis()
     func_name = method.__qualname__
     calls_counts = db.get(func_name)
-    print("{} was called {} times".format(func, calls_counts))
+    print("{} was called {} times".format(func_name, calls_counts))
     input_list = func_name + ":inputs"
     output_list = func_name + ":outputs"
     inputs = db.lrange(input_list, 0, -1)
