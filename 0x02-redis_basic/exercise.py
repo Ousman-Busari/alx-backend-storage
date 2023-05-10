@@ -45,7 +45,7 @@ def replay(method: Callable) -> None:
     """ display the history of calls of a particular function """
     db = redis.Redis()
     func_name = method.__qualname__
-    calls_counts = db.get(func_name)
+    calls_counts = db.get(func_name).decode()
     print("{} was called {} times:".format(func_name, calls_counts))
     input_list = func_name + ":inputs"
     output_list = func_name + ":outputs"
@@ -53,7 +53,7 @@ def replay(method: Callable) -> None:
     outputs = db.lrange(output_list, 0, -1)
     pairs = zip(inputs, outputs)
     for pair in pairs:
-        print("{}((*{},)) -> {}".format(func_name, pair[0].decode(),
+        print("{}(*{}) -> {}".format(func_name, pair[0].decode(),
                                      pair[1].decode()))
 
 
