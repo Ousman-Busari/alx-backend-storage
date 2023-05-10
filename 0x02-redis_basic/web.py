@@ -17,7 +17,7 @@ def count_url(func: Callable) -> Callable:
     cache the result of method with an
     expiration time of 10 seconds
     """
-    @wraps(method)
+    @wraps(func)
     def wrapper(url: str) -> str:
         """
         wraps method and cachees it result
