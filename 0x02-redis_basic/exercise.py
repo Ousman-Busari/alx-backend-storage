@@ -62,7 +62,7 @@ class Cache:
     def __init__(self):
         """ Initiates a new instance of cache """
         self._redis = redis.Redis()
-        self._redis.flushdb
+        self._redis.flushdb()
 
     @count_calls
     @call_history
