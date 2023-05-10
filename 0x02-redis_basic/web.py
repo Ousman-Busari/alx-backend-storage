@@ -26,7 +26,7 @@ def count_visits(method: Callable) -> Callable:
         if res:
             return res.decode("utf-8")
         res = method(url)
-        r.set("count:{}".format(url), 1)
+        r.set("count:{}".format(url), 0)
         r.setex("response:{}".format(url), 10, res)
         return res
     return wrapper
