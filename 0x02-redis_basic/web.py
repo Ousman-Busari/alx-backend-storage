@@ -22,9 +22,8 @@ def count_url(method: Callable) -> Callable:
         """
         wraps method and cachees it result
         """
-        r.incrby(f"count:{url}", 1)
-        # res = method(url)
-        r.expire(f"count:{url}", 10)
+        r.incrby(f"count:{{{url}}}", 1)
+        r.expire(f"count:{{{url}}}", 10)
         return method(url)
     return wrapper
 
